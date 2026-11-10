@@ -17,17 +17,21 @@
       </span>
     </div>
     <div class="center">
-      <div class="mode">
-        {{ mode.name }}
-        <span class="dots"><i v-for="(_, i) in MODES" :key="i" :class="{ on: i === state.m }" /></span>
-      </div>
-      <div class="lv">{{ state.level }}</div>
-      <div class="lbl">助力等级 · {{ levelPercent(state.level) }}%</div>
-      <button class="chip" data-act="scene" aria-label="切换场景" @click="goScene">
-        <SceneIcon :scene="scene" size="16" /><span>{{ scene.n }}</span><MsIcon name="chevron_right" size="14" />
+      <button class="micmain" data-act="mic" aria-label="AI 语音" @click="goVoice"><MsIcon name="mic" /></button>
+      <button
+        class="statchip"
+        data-act="scene"
+        :aria-label="`${mode.name}，${scene.n}，助力等级 ${levelPercent(state.level)}%，点击切换场景`"
+        @click="goScene"
+      >
+        <SceneIcon :scene="scene" size="14" />
+        <span>{{ mode.name.replace('模式', '') }} · {{ scene.n }}</span>
+        <i class="sep" aria-hidden="true" />
+        <b>{{ levelPercent(state.level) }}%</b>
+        <MsIcon name="chevron_right" size="14" />
       </button>
+      <span class="dots"><i v-for="(_, i) in MODES" :key="i" :class="{ on: i === state.m }" /></span>
     </div>
-    <button class="mic" data-act="mic" aria-label="语音" @click="goVoice"><MsIcon name="mic" /></button>
     <div class="toast" :class="{ show: toastShow }" role="status">
       <MsIcon name="check_circle" /><span>{{ toastText }}</span>
     </div>
@@ -37,7 +41,7 @@
 <script setup>
 import { computed, reactive, ref, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
-import { MODES, RING_START, RING_SEG, MAX_LEVEL, levelPercent } from '../data/modes.js'
+import { MODES, RING_START, RING_SWEEP, levelPercent, levelFromPercent } from '../data/modes.js'
 import LevelRing from './LevelRing.vue'
 import MsIcon from './MsIcon.vue'
 import SceneIcon from './SceneIcon.vue'
@@ -81,8 +85,8 @@ function geo(e) {
 function setFromAngle(g) {
   const ang = ((Math.atan2(g.dx, -g.dy) * 180) / Math.PI + 360) % 360
   const rel = (ang - RING_START + 360) % 360
-  if (rel > 290) return
-  const lv = Math.min(MAX_LEVEL, Math.max(1, Math.ceil(rel / RING_SEG)))
+  if (rel > RING_SWEEP + 20) return
+  const lv = levelFromPercent((Math.min(rel, RING_SWEEP) / RING_SWEEP) * 100)
   if (lv !== state.level) {
     state.level = lv
     navigator.vibrate?.(8)
@@ -112,7 +116,7 @@ function onUp(e) {
   const dx = e.clientX - p.x
   const dy = e.clientY - p.y
   if (p.ring) {
-    showToast(`已同步 · ${state.level} 档`)
+    showToast(`已同步 · 助力 ${levelPercent(state.level)}%`)
   } else if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy)) {
     state.m = (state.m + (dx < 0 ? 1 : 2)) % 3
     state.s = 0

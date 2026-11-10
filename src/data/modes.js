@@ -49,21 +49,18 @@ function mix(a, b, t) {
   return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(',')})`
 }
 
+export const RING_SWEEP = 290
+
+export function levelFromPercent(pct) {
+  return Math.min(MAX_LEVEL, Math.max(1, Math.round((pct - 25) / 15) + 1))
+}
+
 export function ringBackground(level) {
-  const stops = []
-  for (let i = 0; i < MAX_LEVEL; i++) {
-    const a = i * RING_SEG
-    const c = i < level ? mix('#8FB4E3', '#5A5FB0', i / (MAX_LEVEL - 1)) : '#1E2330'
-    stops.push(
-      `transparent ${a}deg ${a + 1.4}deg`,
-      `${c} ${a + 1.4}deg ${a + RING_SEG - 1.4}deg`,
-      `transparent ${a + RING_SEG - 1.4}deg ${a + RING_SEG}deg`,
-    )
-  }
-  stops.push('transparent 290deg 360deg')
-  return `conic-gradient(from ${RING_START}deg, ${stops.join(',')})`
+  const fill = (levelPercent(level) / 100) * RING_SWEEP
+  const end = mix('#8FB4E3', '#5A5FB0', fill / RING_SWEEP)
+  return `conic-gradient(from ${RING_START}deg, #8FB4E3 0deg, ${end} ${fill}deg, #1E2330 ${fill}deg ${RING_SWEEP}deg, transparent ${RING_SWEEP}deg 360deg)`
 }
 
 export function knobAngle(level) {
-  return RING_START + level * RING_SEG - 1.4
+  return RING_START + (levelPercent(level) / 100) * RING_SWEEP
 }
