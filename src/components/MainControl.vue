@@ -20,7 +20,7 @@
         <span class="dots"><i v-for="(_, i) in MODES" :key="i" :class="{ on: i === state.m }" /></span>
       </div>
       <div class="lv">{{ state.level }}</div>
-      <div class="lbl">助力等级 · {{ Math.round((state.level / MAX_LEVEL) * 100) }}%</div>
+      <div class="lbl">助力等级 · {{ levelPercent(state.level) }}%</div>
       <button class="chip" data-act="scene" aria-label="切换场景" @click="goScene">
         <SceneIcon :scene="scene" size="16" /><span>{{ scene.n }}</span><MsIcon name="chevron_right" size="14" />
       </button>
@@ -35,7 +35,7 @@
 <script setup>
 import { computed, reactive, ref, onBeforeUnmount } from 'vue'
 import { useRouter } from 'vue-router'
-import { MODES, RING_START, RING_SEG, MAX_LEVEL } from '../data/modes.js'
+import { MODES, RING_START, RING_SEG, MAX_LEVEL, levelPercent } from '../data/modes.js'
 import LevelRing from './LevelRing.vue'
 import MsIcon from './MsIcon.vue'
 import SceneIcon from './SceneIcon.vue'

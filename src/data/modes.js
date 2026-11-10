@@ -36,6 +36,7 @@ export const MODES = [
 
 export const RING_START = 215
 export const MAX_LEVEL = 6
+export const levelPercent = (level) => (level < 1 ? 0 : 25 + (level - 1) * 15)
 export const RING_SEG = 290 / MAX_LEVEL
 
 function hex(h) {
