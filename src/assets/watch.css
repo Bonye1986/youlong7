@@ -39,8 +39,11 @@ section .sub{margin:0 0 22px;color:var(--muted);font-size:13px;line-height:1.6}
 .ring{position:absolute;inset:5px;border-radius:50%;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px));mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px))}
 .knob{position:absolute;width:14px;height:14px;border-radius:50%;background:#F4F7FC;box-shadow:0 0 0 3px rgba(143,180,227,.3);transform:translate(-50%,-50%);pointer-events:none}
 .center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.top{position:absolute;top:22px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.top{position:absolute;top:38px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
 .top .ok{color:var(--b1)}
+.top ~ .center{padding-top:16px}
+.top ~ .center .lv{font-size:54px;margin-top:4px}
+.top ~ .center .chip{margin-top:8px}
 .mode{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:500}
 .dots{display:flex;gap:3px}
 .dots i{width:4px;height:4px;border-radius:2px;background:#3a4050;transition:width .2s}
