@@ -6,6 +6,7 @@
     @pointermove="onMove"
     @pointerup="onUp"
     @pointercancel="pointer = null"
+    @click.capture="onClickCapture"
   >
     <LevelRing :level="state.level" />
     <div class="top">
@@ -93,17 +94,30 @@ function setFromAngle(g) {
   }
 }
 
+const SWIPE_MIN = 32
+let suppressClick = false
+
 function onDown(e) {
   if (!props.interactive) return
-  if (e.target.closest('[data-act]')) return
+  const onAct = Boolean(e.target.closest('[data-act]'))
   const g = geo(e)
-  pointer.value = { x: e.clientX, y: e.clientY, ring: g.d > g.R - 30 }
-  e.currentTarget.setPointerCapture(e.pointerId)
-  if (pointer.value.ring) setFromAngle(g)
+  const ring = !onAct && g.d > g.R * 0.86
+  pointer.value = { x: e.clientX, y: e.clientY, ring }
+  // Capturing on a button would retarget its click to the face, so only capture outside buttons.
+  if (!onAct) e.currentTarget.setPointerCapture(e.pointerId)
+  if (ring) setFromAngle(g)
 }
 
 function onMove(e) {
   if (pointer.value?.ring) setFromAngle(geo(e))
+}
+
+function onClickCapture(e) {
+  if (suppressClick) {
+    e.stopPropagation()
+    e.preventDefault()
+    suppressClick = false
+  }
 }
 
 function switchedTo() {
@@ -117,9 +131,12 @@ function onUp(e) {
   const dy = e.clientY - p.y
   if (p.ring) {
     showToast(`已同步 · 助力 ${levelPercent(state.level)}%`)
-  } else if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy)) {
-    state.m = (state.m + (dx < 0 ? 1 : 2)) % 3
+  } else if (Math.abs(dx) > SWIPE_MIN && Math.abs(dx) > Math.abs(dy)) {
+    state.m = (state.m + (dx < 0 ? 1 : MODES.length - 1)) % MODES.length
     state.s = 0
+    suppressClick = true
+    setTimeout(() => (suppressClick = false), 0)
+    navigator.vibrate?.(10)
     switchedTo()
   }
   pointer.value = null
