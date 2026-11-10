@@ -12,7 +12,9 @@
       <button class="devbtn" data-act="devices" aria-label="当前设备 如影-A3F2，点击管理设备" @click="goDevices">
         <MsIcon name="bluetooth" size="14" class="ok" /><span>如影-A3F2</span><MsIcon name="expand_more" size="14" />
       </button>
-      <span>78%</span>
+      <span class="devbat" title="设备电量" aria-label="设备电量 78%">
+        <MsIcon name="battery_5_bar" size="14" class="devbat-ic" aria-hidden="true" /><span aria-hidden="true">78%</span>
+      </span>
     </div>
     <div class="center">
       <div class="mode">
