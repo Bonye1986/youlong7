@@ -52,6 +52,7 @@ function mix(a, b, t) {
 export const RING_SWEEP = 290
 
 export function levelFromPercent(pct) {
+  if (pct < 12.5) return 0
   return Math.min(MAX_LEVEL, Math.max(1, Math.round((pct - 25) / 15) + 1))
 }
 

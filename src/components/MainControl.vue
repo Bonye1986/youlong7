@@ -85,8 +85,9 @@ function geo(e) {
 
 function setFromAngle(g) {
   const ang = ((Math.atan2(g.dx, -g.dy) * 180) / Math.PI + 360) % 360
-  const rel = (ang - RING_START + 360) % 360
-  if (rel > RING_SWEEP + 20) return
+  let rel = (ang - RING_START + 360) % 360
+  if (rel > 360 - 25) rel = 0
+  else if (rel > RING_SWEEP + 20) return
   const lv = levelFromPercent((Math.min(rel, RING_SWEEP) / RING_SWEEP) * 100)
   if (lv !== state.level) {
     state.level = lv
