@@ -1,5 +1,5 @@
 <template>
-  <BoardLayout title="4 · AI 语音页" sub="长按下键或屏幕麦克风进入。设备负责语音播报，手表同步显示文字。共 7 个状态。">
+  <BoardLayout title="4 · AI 语音页" sub="长按下键或屏幕麦克风进入。设备负责语音播报，手表同步显示文字。共 5 个状态。">
     <WatchCard title="待机（默认）" tag="入口" desc="进入后的默认页，按住麦克风或下键开始录音，并给出指令示例。">
       <div class="center">
         <div class="vidle">
@@ -38,21 +38,6 @@
           今天户外气温 12°C，路面有积雪。建议使用运动模式的雪地场景，档位保持在 5 到 6 档，步伐放慢一些会更稳。
         </div>
 
-      </div>
-    </WatchCard>
-
-    <WatchCard title="播放音乐" tag="结果" desc="识别为音乐指令后进入。外圈为播放进度，设备外放，按上键暂停/继续。">
-      <div class="music-ring" style="--p: 38" aria-hidden="true" />
-      <div class="center">
-        <div class="small"><MsIcon name="graphic_eq" size="14" /> 设备播放中</div>
-        <div class="cover"><MsIcon name="music_note" fill /></div>
-        <div class="song">晴天</div>
-        <div class="t2">周杰伦 · 01:32 / 04:29</div>
-        <div class="mctl">
-          <button aria-label="上一首"><MsIcon name="skip_previous" fill /></button>
-          <button class="play" aria-label="暂停"><MsIcon name="pause" fill /></button>
-          <button aria-label="下一首"><MsIcon name="skip_next" fill /></button>
-        </div>
       </div>
     </WatchCard>
 
