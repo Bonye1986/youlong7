@@ -6,12 +6,12 @@
     :class="{ on: i === selected }"
     :aria-label="sc.n"
     :aria-pressed="i === selected"
-    :style="{ '--a': `${(i / mode.scenes.length) * 360}deg` }"
+    :style="pos(i)"
     @click="pick(i)"
   >
     <SceneIcon :scene="sc" />
   </button>
-  <div class="center">
+  <div class="center" style="pointer-events: none">
     <div class="small">{{ mode.name }}</div>
     <div class="scname">{{ mode.scenes[selected].n }}</div>
     <div class="small" style="margin-top: 4px">{{ sending ? '已下发，返回中…' : '点击即下发' }}</div>
@@ -30,6 +30,15 @@ const mode = computed(() => MODES[props.m])
 const selected = ref(props.s)
 const sending = ref(false)
 let timer = null
+
+const RING_RADIUS = 36
+function pos(i) {
+  const a = (i / mode.value.scenes.length) * Math.PI * 2
+  return {
+    left: `${50 + RING_RADIUS * Math.sin(a)}%`,
+    top: `${50 - RING_RADIUS * Math.cos(a)}%`,
+  }
+}
 
 function pick(i) {
   if (sending.value) return
