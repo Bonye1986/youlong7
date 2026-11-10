@@ -75,6 +75,7 @@ section .sub{margin:0 0 22px;color:var(--muted);font-size:13px;line-height:1.6}
 .rings{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 33px,#1a1f2a 33px 34px)}
 .brand{font-size:30px;font-weight:600;letter-spacing:2px;background:linear-gradient(135deg,#C9DAF1,var(--b1) 45%,var(--b2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .devimg{width:72px;height:72px;object-fit:contain}
+.devthumb{display:block;width:52px;height:52px;object-fit:contain;margin:0 auto}
 img[src$="device.png"]{background:#fff;border-radius:16px;padding:4px;box-sizing:border-box}
 .bar{width:110px;height:4px;border-radius:2px;background:var(--line);overflow:hidden;margin-top:12px}
 .bar i{display:block;height:100%;width:60%;border-radius:2px;background:linear-gradient(90deg,var(--b1),var(--b2))}
@@ -86,8 +87,17 @@ img[src$="device.png"]{background:#fff;border-radius:16px;padding:4px;box-sizing
 .scname{font-size:18px;font-weight:600;margin-top:4px}
 .small{font-size:10.5px;color:var(--muted)}
 
+.vring{position:absolute;inset:0;pointer-events:none;z-index:0}
 .vb{position:absolute;left:50%;top:50%;width:0;height:0}
-.vi{position:absolute;left:-1.5px;width:3px;border-radius:2px;background:linear-gradient(var(--b1),var(--b2));transform-origin:top center;animation:pulse .8s ease-in-out infinite alternate}
+.vi{position:absolute;left:-1.5px;top:calc(var(--S) / -2 + 7px);width:3px;border-radius:2px;background:linear-gradient(var(--b1),var(--b2));transform-origin:top center;animation:pulse .8s ease-in-out infinite alternate}
+.center{z-index:1}
+.vidle{display:flex;flex-direction:column;align-items:center;gap:4px}
+.vidle .micbig{width:58px;height:58px;box-shadow:none;background:var(--surface);color:var(--b1);border:1px solid #2c3550}
+.vidle .micbig .ms{font-size:28px}
+.tips{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:10px}
+.tips span{font-size:10.5px;color:var(--text);background:var(--surface);border-radius:999px;padding:3px 10px}
+.keyhint{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted);margin-top:8px}
+.keyhint .ms{font-size:13px}
 @keyframes pulse{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
 .micbig{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;box-shadow:0 0 0 8px rgba(110,155,209,.12),0 0 0 16px rgba(110,155,209,.06)}
 .micbig .ms{font-size:30px}
@@ -100,6 +110,13 @@ img[src$="device.png"]{background:#fff;border-radius:16px;padding:4px;box-sizing
 .eq i{width:2px;border-radius:1px;background:var(--b1);animation:eq .7s ease-in-out infinite alternate}
 .eq i:nth-child(1){height:5px}.eq i:nth-child(2){height:11px;animation-delay:.2s}.eq i:nth-child(3){height:8px;animation-delay:.4s}.eq i:nth-child(4){height:12px;animation-delay:.1s}
 @keyframes eq{from{transform:scaleY(.4)}to{transform:scaleY(1)}}
+.music-ring{position:absolute;inset:5px;border-radius:50%;background:conic-gradient(var(--b1) calc(var(--p)*1%),var(--line) 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));pointer-events:none}
+.cover{width:52px;height:52px;border-radius:14px;margin-top:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff}
+.cover .ms{font-size:28px}
+.song{font-size:15px;font-weight:600;margin-top:8px}
+.mctl{display:flex;align-items:center;gap:14px;margin-top:8px}
+.mctl button{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text)}
+.mctl .play{width:38px;height:38px;background:var(--surface);border:1px solid var(--line)}
 .speaking{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--b1);margin-top:10px}
 .cmd{margin-top:10px;padding:8px 12px;border-radius:12px;background:var(--surface);font-size:12px;line-height:1.55}
 .cmd b{color:var(--b1);font-weight:600}
