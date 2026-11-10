@@ -96,6 +96,10 @@ img[src$="device.png"]{background:transparent;object-fit:contain;filter:drop-sha
 
 .sc{position:absolute;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:var(--surface);display:grid;place-items:center;color:var(--muted);transition:background .2s,color .2s}
 .sc .ms{font-size:20px}
+.sic{width:1.25em;height:1.25em;display:inline-block;flex:none}
+.sc .sic{width:24px;height:24px}
+.ic .sic{width:30px;height:30px}
+.mic .sic,.statchip .sic{width:16px;height:16px}
 .sc .kg{font-size:12.5px}
 .sc.on{background:linear-gradient(135deg,var(--b1),var(--b2));color:#fff;box-shadow:0 0 0 3px rgba(143,180,227,.22)}
 .scname{font-size:18px;font-weight:600;margin-top:4px}

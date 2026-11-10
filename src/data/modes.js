@@ -3,13 +3,13 @@ export const MODES = [
     name: '运动模式',
     short: '运动',
     scenes: [
-      { n: '步行', i: 'directions_walk' },
-      { n: '山地', i: 'landscape' },
+      { n: '步行', i: 'walk' },
+      { n: '山地', i: 'mountain' },
       { n: '上下梯', i: 'stairs' },
       { n: '骑行', i: 'directions_bike' },
-      { n: '碎石路', i: 'grain' },
+      { n: '碎石路', i: 'gravel' },
       { n: '雪地', i: 'ac_unit' },
-      { n: '山丘', i: 'terrain' },
+      { n: '山丘', i: 'hill' },
     ],
   },
   {
