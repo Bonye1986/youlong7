@@ -1,7 +1,7 @@
 <template>
   <BoardLayout
     title="6 · 设备管理与切换"
-    sub="默认自动重连最近设备；最近设备不在附近或需要更换时进入列表。助力中禁止切换，防止运动中断连。共 8 个状态。"
+    sub="默认自动重连最近设备；最近设备不在附近或需要更换时进入列表。共 7 个状态。"
   >
     <WatchCard
       title="设备列表"
@@ -33,19 +33,6 @@
     </WatchCard>
 
     <WatchCard
-      title="助力中禁止切换"
-      desc="档位大于 0 或检测到运动时拦截切换，设备同步播报「请先停止助力」。"
-      :active="s === 'busy'"
-    >
-      <div class="center">
-        <div class="ic warn"><MsIcon name="front_hand" /></div>
-        <div class="t1">请先停止助力</div>
-        <div class="t2">设备正在助力（4 档），运动中断开有摔倒风险</div>
-        <RouterLink class="pbtn" to="/control">返回控制页</RouterLink>
-      </div>
-    </WatchCard>
-
-    <WatchCard
       title="切换中"
       tag="点击跳转"
       desc="已断开旧设备，外圈进度环旋转，连接新设备。"
@@ -70,16 +57,15 @@
       <div class="center">
         <div class="ic grad"><MsIcon name="check" fill /></div>
         <div class="t1">已连接 如影-7C19</div>
-        <div class="speaking"><span class="eq"><i /><i /><i /><i /></span>设备播报中</div>
+
       </div>
     </WatchCard>
 
-    <WatchCard title="长按操作菜单" desc="对列表中的设备长按，可重命名或删除配对记录。" :active="s === 'menu'">
+    <WatchCard title="长按操作菜单" desc="对列表中的设备长按，可删除配对记录。" :active="s === 'menu'">
       <div class="center">
         <img class="devthumb" src="/img/device.png" alt="如影 SD-H Plus 设备" />
         <div class="t1" style="margin-top: 6px">如影-7C19</div>
         <div class="menu">
-          <button><MsIcon name="edit" size="16" />重命名</button>
           <button class="danger"><MsIcon name="link_off" size="16" />删除配对</button>
         </div>
         <RouterLink class="lnk" :to="{ path: '/devices', query: { s: 'list' } }">取消</RouterLink>

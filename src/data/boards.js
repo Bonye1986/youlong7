@@ -10,7 +10,7 @@ export const BOARDS = [
     path: '/control',
     name: '主控制页',
     count: 3,
-    desc: '运动 / 抗阻 / 放松三种模式，外圈 1–10 档位环可拖动',
+    desc: '运动 / 抗阻 / 放松三种模式，外圈 1–6 档位环可拖动',
     component: () => import('../views/ControlView.vue'),
   },
   {
@@ -23,8 +23,8 @@ export const BOARDS = [
   {
     path: '/voice',
     name: 'AI 语音页',
-    count: 7,
-    desc: '待机、录音、识别、闲聊回复、播放音乐、设备控制、识别失败',
+  count: 6,
+  desc: '待机、录音、识别、闲聊回复、播放音乐、设备控制',
     component: () => import('../views/VoiceView.vue'),
   },
   {

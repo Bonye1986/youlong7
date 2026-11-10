@@ -35,8 +35,8 @@ export const MODES = [
 ]
 
 export const RING_START = 215
-export const RING_SEG = 29
-export const MAX_LEVEL = 10
+export const MAX_LEVEL = 6
+export const RING_SEG = 290 / MAX_LEVEL
 
 function hex(h) {
   return [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16))
@@ -52,7 +52,7 @@ export function ringBackground(level) {
   const stops = []
   for (let i = 0; i < MAX_LEVEL; i++) {
     const a = i * RING_SEG
-    const c = i < level ? mix('#8FB4E3', '#5A5FB0', i / 9) : '#1E2330'
+    const c = i < level ? mix('#8FB4E3', '#5A5FB0', i / (MAX_LEVEL - 1)) : '#1E2330'
     stops.push(
       `transparent ${a}deg ${a + 1.4}deg`,
       `${c} ${a + 1.4}deg ${a + RING_SEG - 1.4}deg`,
