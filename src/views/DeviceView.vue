@@ -8,7 +8,10 @@
         <div class="stats">
           <div v-for="s in stats" :key="s.l" class="stat"><b>{{ s.v }}</b><span>{{ s.l }}</span></div>
         </div>
-        <RouterLink class="obtn" to="/connect">断开设备</RouterLink>
+        <div class="btns">
+          <RouterLink class="gbtn" to="/devices?s=list">切换设备</RouterLink>
+          <RouterLink class="obtn" to="/connect">断开</RouterLink>
+        </div>
       </div>
     </WatchCard>
 

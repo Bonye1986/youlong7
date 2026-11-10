@@ -60,6 +60,7 @@
         <div class="t1">未发现设备</div>
         <div class="t2">确认设备已开机且电量充足</div>
         <button class="pbtn">重新扫描</button>
+        <RouterLink class="lnk" to="/devices?s=list">选择其他设备</RouterLink>
       </div>
     </WatchCard>
   </BoardLayout>

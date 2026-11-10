@@ -34,4 +34,11 @@ export const BOARDS = [
     desc: '设备信息页、断连浮层、操作提示',
     component: () => import('../views/DeviceView.vue'),
   },
+  {
+    path: '/devices',
+    name: '设备管理与切换',
+    count: 8,
+    desc: '设备列表、最近设备不在附近、切换确认、助力中禁止切换、切换中、切换成功、长按菜单、设备已满',
+    component: () => import('../views/DevicesView.vue'),
+  },
 ]

@@ -9,7 +9,10 @@
   >
     <LevelRing :level="state.level" />
     <div class="top">
-      <MsIcon name="bluetooth" size="14" class="ok" /><span>09:58</span><span>78%</span>
+      <button class="devbtn" data-act="devices" aria-label="当前设备 如影-A3F2，点击管理设备" @click="goDevices">
+        <MsIcon name="bluetooth" size="14" class="ok" /><span>如影-A3F2</span><MsIcon name="expand_more" size="14" />
+      </button>
+      <span>78%</span>
     </div>
     <div class="center">
       <div class="mode">
@@ -118,6 +121,9 @@ function onUp(e) {
 
 function goScene() {
   if (props.interactive) router.push({ path: '/scene', query: { m: state.m, s: state.s } })
+}
+function goDevices() {
+  if (props.interactive) router.push({ path: '/devices', query: { s: 'list' } })
 }
 function goVoice() {
   if (props.interactive) router.push('/voice')
