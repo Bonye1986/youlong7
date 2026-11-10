@@ -23,8 +23,8 @@ export const BOARDS = [
   {
     path: '/voice',
     name: 'AI 语音页',
-    count: 7,
-    desc: '待机、录音、识别、闲聊回复、播放音乐、设备控制、识别失败',
+  count: 6,
+  desc: '待机、录音、识别、闲聊回复、播放音乐、设备控制',
     component: () => import('../views/VoiceView.vue'),
   },
   {

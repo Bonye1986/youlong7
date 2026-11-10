@@ -62,15 +62,7 @@
         <div class="t1">已执行</div>
         <div class="cmd">切换到 <b>运动 · 雪地</b><br />档位 <b>6</b></div>
       </div>
-    </WatchCard>
-
-    <WatchCard title="识别失败" desc="可直接再次长按下键重试。">
-      <div class="center">
-        <div class="ic err"><MsIcon name="hearing_disabled" /></div>
-        <div class="t1">没听清</div>
-        <div class="t2">请按住下键再说一次</div>
-      </div>
-    </WatchCard>
+  </WatchCard>
   </BoardLayout>
 </template>
 
