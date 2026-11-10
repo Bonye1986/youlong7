@@ -37,7 +37,7 @@
         <div class="reply">
           今天户外气温 12°C，路面有积雪。建议使用运动模式的雪地场景，档位保持在 5 到 6 档，步伐放慢一些会更稳。
         </div>
-        <div class="speaking"><span class="eq"><i /><i /><i /><i /></span>设备播报中</div>
+
       </div>
     </WatchCard>
 

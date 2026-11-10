@@ -2,7 +2,7 @@
   <header>
     <h1>如影 SD-H Plus · 圆形手表端 UI</h1>
     <p>
-      深色 OLED 底，沿用手机 APP 的钢蓝到靛蓝渐变。标志性元素是外圈的 10 格档位环，其余保持安静。图标使用 Material
+      深色 OLED 底，沿用手机 APP 的钢蓝到靛蓝渐变。标志性元素是外圈的 6 格档位环，其余保持安静。图标使用 Material
       Symbols 字体图标，设备图为位图，全部不使用 SVG。
     </p>
     <div class="keys">
